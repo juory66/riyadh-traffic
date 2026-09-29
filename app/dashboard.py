@@ -36,7 +36,7 @@ st.markdown("""
 /* زر الفلتر المخصص */
 #custom-sidebar-btn {
     position: fixed;
-    top: 130px;
+    top: 60px;
     left: 12px;
     z-index: 999999;
     background-color: #1B5E20;
@@ -51,15 +51,16 @@ st.markdown("""
     display: flex;
     align-items: center;
     justify-content: center;
+    text-decoration: none;
 }
 </style>
 
-<button id="custom-sidebar-btn" onclick="
+<a href="#فلتر-البيانات" id="custom-sidebar-btn" onclick="
     var btn = document.querySelector('[data-testid=stSidebarCollapsedControl] button');
     if(!btn) btn = document.querySelector('[data-testid=collapsedControl] button');
     if(!btn) btn = document.querySelector('button[kind=header]');
     if(btn) btn.click();
-">☰</button>
+">☰</a>
 """, unsafe_allow_html=True)
 
 st.title("🚦 لوحة تحكم زحمة المرور — الرياض")
@@ -68,13 +69,13 @@ st.markdown("---")
 # دالة تحويل الساعة لنظام 12
 def to_12h(hour):
     if hour == 0:
-        return "12:00 AM"
+        return "12 AM"
     elif hour < 12:
-        return f"{hour}:00 AM"
+        return f"{hour} AM"
     elif hour == 12:
-        return "12:00 PM"
+        return "12 PM"
     else:
-        return f"{hour - 12}:00 PM"
+        return f"{hour - 12} PM"
 
 @st.cache_data
 def load_data():
