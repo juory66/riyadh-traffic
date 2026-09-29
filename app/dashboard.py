@@ -33,29 +33,33 @@ st.markdown("""
     border: none !important;
     color: white !important;
 }
-/* زر السهم — أخضر دايماً */
-button[data-testid="baseButton-header"],
-[data-testid="collapsedControl"] button,
-[data-testid="stSidebarCollapsedControl"] button,
-[data-testid="stSidebarCollapsedControl"],
-[data-testid="collapsedControl"] {
-    background-color: #1B5E20 !important;
-    border-radius: 50% !important;
-    width: 56px !important;
-    height: 56px !important;
-    top: 130px !important;
-    border: 2px solid #4CAF50 !important;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.3) !important;
-}
-button[data-testid="baseButton-header"] svg,
-[data-testid="collapsedControl"] svg,
-[data-testid="stSidebarCollapsedControl"] svg {
-    fill: white !important;
-    color: white !important;
-    width: 32px !important;
-    height: 32px !important;
+/* زر الفلتر المخصص */
+#custom-sidebar-btn {
+    position: fixed;
+    top: 130px;
+    left: 12px;
+    z-index: 999999;
+    background-color: #1B5E20;
+    color: white;
+    border: 2px solid #4CAF50;
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    font-size: 26px;
+    cursor: pointer;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 </style>
+
+<button id="custom-sidebar-btn" onclick="
+    var btn = document.querySelector('[data-testid=stSidebarCollapsedControl] button');
+    if(!btn) btn = document.querySelector('[data-testid=collapsedControl] button');
+    if(!btn) btn = document.querySelector('button[kind=header]');
+    if(btn) btn.click();
+">☰</button>
 """, unsafe_allow_html=True)
 
 st.title("🚦 لوحة تحكم زحمة المرور — الرياض")
