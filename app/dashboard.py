@@ -42,9 +42,9 @@ st.markdown("""
     background-color: #1B5E20;
     color: white;
     border: 2px solid #4CAF50;
-    border-radius: 50%;
-    width: 56px;
-    height: 56px;
+    border-radius: 8px;
+    width: 52px;
+    height: 52px;
     font-size: 26px;
     cursor: pointer;
     box-shadow: 0 3px 10px rgba(0,0,0,0.3);
@@ -55,12 +55,18 @@ st.markdown("""
 }
 </style>
 
-<a href="#فلتر-البيانات" id="custom-sidebar-btn" onclick="
-    var btn = document.querySelector('[data-testid=stSidebarCollapsedControl] button');
-    if(!btn) btn = document.querySelector('[data-testid=collapsedControl] button');
-    if(!btn) btn = document.querySelector('button[kind=header]');
-    if(btn) btn.click();
-">☰</a>
+<button id="custom-sidebar-btn" onclick="
+    var btns = document.querySelectorAll('button');
+    for(var i=0; i<btns.length; i++){
+        if(btns[i].getAttribute('aria-label') && btns[i].getAttribute('aria-label').includes('sidebar')){
+            btns[i].click(); return;
+        }
+    }
+    var b = document.querySelector('[data-testid=stSidebarCollapsedControl] button') ||
+            document.querySelector('[data-testid=collapsedControl] button') ||
+            document.querySelector('section[data-testid=stSidebarCollapsedControl]');
+    if(b) b.click();
+">☰</button>
 """, unsafe_allow_html=True)
 
 st.title("🚦 لوحة تحكم زحمة المرور — الرياض")
@@ -224,9 +230,9 @@ fig1.update_layout(
     yaxis_title="متوسط الازدحام",
     yaxis_range=[0, 11],
     xaxis=dict(
-        tickvals=list(range(24)),
-        ticktext=[to_12h(h) for h in range(24)],
-        tickangle=45
+        tickvals=[0, 3, 6, 9, 12, 15, 18, 21],
+        ticktext=["12AM", "3AM", "6AM", "9AM", "12PM", "3PM", "6PM", "9PM"],
+        tickangle=0
     ),
     showlegend=False,
     plot_bgcolor="white",
