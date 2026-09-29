@@ -33,40 +33,24 @@ st.markdown("""
     border: none !important;
     color: white !important;
 }
-/* زر الفلتر المخصص */
-#custom-sidebar-btn {
-    position: fixed;
-    top: 60px;
-    left: 12px;
-    z-index: 999999;
-    background-color: #1B5E20;
-    color: white;
-    border: 2px solid #4CAF50;
-    border-radius: 8px;
-    width: 52px;
-    height: 52px;
-    font-size: 26px;
-    cursor: pointer;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
+/* تلوين زر الشريط الجانبي الأصلي */
+[data-testid="stSidebarCollapsedControl"],
+[data-testid="collapsedControl"] {
+    background-color: #1B5E20 !important;
+    border-radius: 8px !important;
+    border: 2px solid #4CAF50 !important;
+    top: 55px !important;
+}
+[data-testid="stSidebarCollapsedControl"] svg,
+[data-testid="collapsedControl"] svg {
+    fill: white !important;
+    color: white !important;
+}
+/* إبعاد محتوى الصفحة عن زر الشريط */
+.main .block-container {
+    padding-top: 2rem !important;
 }
 </style>
-
-<button id="custom-sidebar-btn" onclick="
-    var btns = document.querySelectorAll('button');
-    for(var i=0; i<btns.length; i++){
-        if(btns[i].getAttribute('aria-label') && btns[i].getAttribute('aria-label').includes('sidebar')){
-            btns[i].click(); return;
-        }
-    }
-    var b = document.querySelector('[data-testid=stSidebarCollapsedControl] button') ||
-            document.querySelector('[data-testid=collapsedControl] button') ||
-            document.querySelector('section[data-testid=stSidebarCollapsedControl]');
-    if(b) b.click();
-">☰</button>
 """, unsafe_allow_html=True)
 
 st.title("🚦 لوحة تحكم زحمة المرور — الرياض")
