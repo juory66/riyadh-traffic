@@ -31,6 +31,32 @@ st.markdown("""
     border: none !important;
     color: white !important;
 }
+/* زر فتح الشريط الجانبي — كل الاحتمالات */
+[data-testid="collapsedControl"],
+button[kind="header"],
+.st-emotion-cache-iiif1v,
+section[data-testid="stSidebarCollapsedControl"] {
+    top: 80px !important;
+    position: fixed !important;
+    background-color: #1B5E20 !important;
+    border-radius: 50% !important;
+    width: 52px !important;
+    height: 52px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3) !important;
+    z-index: 999999 !important;
+}
+[data-testid="collapsedControl"] svg,
+button[kind="header"] svg,
+.st-emotion-cache-iiif1v svg,
+section[data-testid="stSidebarCollapsedControl"] svg {
+    width: 30px !important;
+    height: 30px !important;
+    fill: white !important;
+    color: white !important;
+}
 </style>
 """, unsafe_allow_html=True)
 
