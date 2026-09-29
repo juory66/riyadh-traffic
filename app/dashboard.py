@@ -114,40 +114,20 @@ regions = {
 }
 
 # ==============================
-# الشريط الجانبي — المنطقة والحي فقط
+# الفلتر — داخل الصفحة يشتغل على الجوال والكمبيوتر
 # ==============================
-st.sidebar.header("🔍 فلتر البيانات")
-
 days = ["الأحد", "الاثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت"]
 hour_labels = [to_12h(h) for h in range(24)]
 districts = sorted(df[col_dist].unique())
 
-selected_region = st.sidebar.selectbox("اختر المنطقة", list(regions.keys()))
-region_districts = regions[selected_region]
-selected_district = st.sidebar.selectbox("اختر الحي", sorted(region_districts))
+with st.expander("🔍 فلتر البيانات — اضغط هنا", expanded=True):
+    col_f1, col_f2 = st.columns(2)
+    with col_f1:
+        selected_region = st.selectbox("🗺️ المنطقة", list(regions.keys()))
+    region_districts = regions[selected_region]
+    with col_f2:
+        selected_district = st.selectbox("📍 الحي", sorted(region_districts))
 
-# زر فتح الفلتر للجوال
-st.markdown("""
-<style>
-div[data-testid="stSidebar"] { transition: all 0.3s; }
-.filter-hint {
-    background-color: #1B5E20;
-    color: white;
-    padding: 10px 16px;
-    border-radius: 8px;
-    text-align: center;
-    font-size: 16px;
-    margin-bottom: 10px;
-    display: none;
-}
-@media (max-width: 768px) {
-    .filter-hint { display: block !important; }
-}
-</style>
-<div class="filter-hint">
-    👈 اسحب من يسار الشاشة لفتح الفلتر
-</div>
-""", unsafe_allow_html=True)
 
 # ==============================
 # الوقت الحالي
