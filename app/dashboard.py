@@ -14,8 +14,10 @@ st.set_page_config(
 
 st.markdown("""
 <style>
-[data-testid="stSidebar"] {
-    background-color: #1B5E20;
+/* الشريط الجانبي — أخضر غامق */
+[data-testid="stSidebar"],
+[data-testid="stSidebar"] > div:first-child {
+    background-color: #1B5E20 !important;
 }
 [data-testid="stSidebar"] * {
     color: white !important;
@@ -31,31 +33,27 @@ st.markdown("""
     border: none !important;
     color: white !important;
 }
-/* زر فتح الشريط الجانبي — كل الاحتمالات */
-[data-testid="collapsedControl"],
-button[kind="header"],
-.st-emotion-cache-iiif1v,
-section[data-testid="stSidebarCollapsedControl"] {
-    top: 80px !important;
-    position: fixed !important;
+/* زر السهم — أخضر دايماً */
+button[data-testid="baseButton-header"],
+[data-testid="collapsedControl"] button,
+[data-testid="stSidebarCollapsedControl"] button,
+[data-testid="stSidebarCollapsedControl"],
+[data-testid="collapsedControl"] {
     background-color: #1B5E20 !important;
     border-radius: 50% !important;
-    width: 52px !important;
-    height: 52px !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.3) !important;
-    z-index: 999999 !important;
+    width: 56px !important;
+    height: 56px !important;
+    top: 130px !important;
+    border: 2px solid #4CAF50 !important;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.3) !important;
 }
+button[data-testid="baseButton-header"] svg,
 [data-testid="collapsedControl"] svg,
-button[kind="header"] svg,
-.st-emotion-cache-iiif1v svg,
-section[data-testid="stSidebarCollapsedControl"] svg {
-    width: 30px !important;
-    height: 30px !important;
+[data-testid="stSidebarCollapsedControl"] svg {
     fill: white !important;
     color: white !important;
+    width: 32px !important;
+    height: 32px !important;
 }
 </style>
 """, unsafe_allow_html=True)
