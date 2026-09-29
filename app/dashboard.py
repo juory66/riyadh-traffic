@@ -12,6 +12,28 @@ st.set_page_config(
     layout="wide"
 )
 
+st.markdown("""
+<style>
+[data-testid="stSidebar"] {
+    background-color: #FF6B00;
+}
+[data-testid="stSidebar"] * {
+    color: white !important;
+}
+[data-testid="stSidebar"] .stSelectbox label,
+[data-testid="stSidebar"] header {
+    color: white !important;
+    font-size: 16px !important;
+    font-weight: bold !important;
+}
+[data-testid="stSidebar"] [data-baseweb="select"] > div {
+    background-color: #FF8C00 !important;
+    border: none !important;
+    color: white !important;
+}
+</style>
+""", unsafe_allow_html=True)
+
 st.title("🚦 لوحة تحكم زحمة المرور — الرياض")
 st.markdown("---")
 
@@ -181,7 +203,7 @@ fig1.update_layout(
     plot_bgcolor="white",
     bargap=0.15
 )
-st.plotly_chart(fig1, use_container_width=True)
+st.plotly_chart(fig1, use_container_width=True, config={"staticPlot": True})
 
 st.markdown("---")
 
@@ -208,7 +230,7 @@ fig2.update_layout(
     yaxis_title="",
     plot_bgcolor="white"
 )
-st.plotly_chart(fig2, use_container_width=True)
+st.plotly_chart(fig2, use_container_width=True, config={"staticPlot": True})
 
 st.markdown("---")
 
