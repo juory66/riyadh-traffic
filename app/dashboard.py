@@ -15,7 +15,7 @@ st.set_page_config(
 st.markdown("""
 <style>
 [data-testid="stSidebar"] {
-    background-color: #FF6B00;
+    background-color: #1B5E20;
 }
 [data-testid="stSidebar"] * {
     color: white !important;
@@ -27,7 +27,7 @@ st.markdown("""
     font-weight: bold !important;
 }
 [data-testid="stSidebar"] [data-baseweb="select"] > div {
-    background-color: #FF8C00 !important;
+    background-color: #2E7D32 !important;
     border: none !important;
     color: white !important;
 }
